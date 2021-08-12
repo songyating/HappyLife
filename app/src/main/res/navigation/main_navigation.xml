@@ -53,9 +53,13 @@
         android:id="@+id/video_list_fragment"
         android:name="com.example.happylife.fragment.VideoListFragment"
         android:label="fragment_video_list"
-        tools:layout="@layout/fragment_video_list" >
+        tools:layout="@layout/fragment_video_list">
         <action
             android:id="@+id/action_video_list_fragment_to_picture_detail_fragment"
-            app:destination="@id/picture_detail_fragment" />
+            app:destination="@id/picture_detail_fragment"
+            app:enterAnim="@anim/right_to_left_enter_anim"
+            app:exitAnim="@anim/right_to_left_exit_anim"
+            app:popEnterAnim="@anim/left_to_right_enter_anim"
+            app:popExitAnim="@anim/left_to_right_exit_anim" />
     </fragment>
 </navigation>
