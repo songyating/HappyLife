@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home_fragment"
+        android:icon="@mipmap/tab_home_unselect"
+        android:title="@string/home"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/news_fragment"
+        android:icon="@mipmap/tab_note_unselect"
+        android:title="@string/news"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/picture_list_fragment"
+        android:icon="@mipmap/tab_find_unselect"
+        android:title="@string/pictures"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/video_list_fragment"
+        android:icon="@mipmap/tab_live_unselect"
+        android:title="@string/video"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/my_fragment"
+        android:icon="@mipmap/tab_mine_unselect"
+        android:title="@string/mine"
+        app:showAsAction="ifRoom" />
+
+</menu>
