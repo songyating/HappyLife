@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/news_fragment"
-        android:name="com.example.happylife.fragment.NewsFragment"
+        android:name="com.example.happylife.fragment.NewsListFragment"
         android:label="新闻"
-        tools:layout="@layout/fragment_news">
+        tools:layout="@layout/fragment_news_list">
         <action
             android:id="@+id/action_news_fragment_to_news_detail_fragment"
             app:destination="@id/news_detail_fragment" />
@@ -47,19 +47,22 @@
         android:id="@+id/picture_list_fragment"
         android:name="com.example.happylife.fragment.PictureListFragment"
         android:label="fragment_picture_list"
-        tools:layout="@layout/fragment_picture_list" />
-
-    <fragment
-        android:id="@+id/video_list_fragment"
-        android:name="com.example.happylife.fragment.VideoListFragment"
-        android:label="fragment_video_list"
-        tools:layout="@layout/fragment_video_list">
+        tools:layout="@layout/fragment_picture_list">
         <action
-            android:id="@+id/action_video_list_fragment_to_picture_detail_fragment"
+            android:id="@+id/action_picture_list_fragment_to_picture_detail_fragment"
             app:destination="@id/picture_detail_fragment"
             app:enterAnim="@anim/right_to_left_enter_anim"
             app:exitAnim="@anim/right_to_left_exit_anim"
             app:popEnterAnim="@anim/left_to_right_enter_anim"
             app:popExitAnim="@anim/left_to_right_exit_anim" />
     </fragment>
+
+    <fragment
+        android:id="@+id/video_list_fragment"
+        android:name="com.example.happylife.fragment.VideoListFragment"
+        android:label="fragment_video_list"
+        tools:layout="@layout/fragment_video_list"/>
+
+    <include app:graph="@navigation/ad_navigation" />
+
 </navigation>

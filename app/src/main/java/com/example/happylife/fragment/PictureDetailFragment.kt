@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.ViewCompat
+import androidx.transition.TransitionInflater
 import com.example.happylife.R
+import com.example.happylife.databinding.FragmentPictureDetailBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -15,12 +18,19 @@ import com.example.happylife.R
  */
 class PictureDetailFragment : Fragment() {
 
+    lateinit var binding: FragmentPictureDetailBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentPictureDetailBinding.inflate(
+            LayoutInflater.from(requireContext()),
+            container,
+            false
+        )
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_picture_detail, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,5 +38,10 @@ class PictureDetailFragment : Fragment() {
         arguments?.getString("name").let {
             view.findViewById<TextView>(R.id.tv_content).setText(it)
         }
+
+        sharedElementEnterTransition = TransitionInflater.from(context)
+            .inflateTransition(R.transition.shared_element_transition)
+        ViewCompat.setTransitionName(binding.ivPicture, "picture")
+
     }
 }

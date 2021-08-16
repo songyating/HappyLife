@@ -8,4 +8,13 @@
     <string name="pictures">图集</string>
     <string name="video">视频</string>
 
+    <string-array name="tab_list_names">
+        <item>首页</item>
+        <item>新闻热点</item>
+        <item>视频</item>
+        <item>图集</item>
+        <item>防疫工作</item>
+    </string-array>
+
+
 </resources>
