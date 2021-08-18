@@ -2,10 +2,8 @@ package com.example.happylife.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
-import com.example.happylife.bean.SimpleNews
-import com.example.happylife.datasource.factory.NewsListDataSourceFactory
+import androidx.paging.cachedIn
+import com.example.happylife.repository.NewsListRepository
 
 /**
  * @author by syt
@@ -13,17 +11,7 @@ import com.example.happylife.datasource.factory.NewsListDataSourceFactory
  * desc:
  */
 class NewsListViewModel : ViewModel() {
-    //PagedList.Config提供分页需要的参数
-    var pagedListLiveData = LivePagedListBuilder<Int, SimpleNews>(
-        NewsListDataSourceFactory(viewModelScope),
-        PagedList.Config.Builder().setPageSize(20).build()
-    ).build()
-
-    /* 下拉刷新
-     * 用户进行下拉刷新的时候通过只需要调用invalidate方法，
-     * LiveData会重新生成一个新的PagedList，这个PagedList会委托DataSource去请求新的数据
-     */
-    fun resetQuery() {
-        pagedListLiveData.value?.dataSource?.invalidate()
-    }
+    //cachedIn将服务器返回的数据在viewModelScope这个作用域内进行缓存
+    //手机横竖屏发生了旋转导致Activity重新创建，Paging 3就可以直接读取缓存中的数据，而不用重新发起网络请求了。
+    val flow = NewsListRepository.getPagingData().cachedIn(viewModelScope)
 }

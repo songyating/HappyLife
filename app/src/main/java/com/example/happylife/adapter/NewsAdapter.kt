@@ -2,7 +2,7 @@ package com.example.happylife.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -17,7 +17,18 @@ import com.example.happylife.databinding.ItemNewsBinding
  * 只是对getItemCount与getItem进行了重写，因为它使用到了DiffUtil，避免对数据的无用更新。
  */
 // 1
-class NewsAdapter : PagedListAdapter<SimpleNews, RecyclerView.ViewHolder>(NewsDiffCallback()) {
+class NewsAdapter : PagingDataAdapter<SimpleNews, RecyclerView.ViewHolder>(COMPARATOR) {
+    companion object {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<SimpleNews>() {
+            override fun areItemsTheSame(oldItem: SimpleNews, newItem: SimpleNews): Boolean {
+                return oldItem.Id == newItem.Id
+            }
+
+            override fun areContentsTheSame(oldItem: SimpleNews, newItem: SimpleNews): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 
     // 2
     override fun onCreateViewHolder(
@@ -41,7 +52,8 @@ class NewsAdapter : PagedListAdapter<SimpleNews, RecyclerView.ViewHolder>(NewsDi
 
 
     // 5
-    class NewsListItemHolder(private val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
+    class NewsListItemHolder(private val binding: ItemNewsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         private var simpleNews: SimpleNews? = null
 
@@ -54,16 +66,6 @@ class NewsAdapter : PagedListAdapter<SimpleNews, RecyclerView.ViewHolder>(NewsDi
             // 7
             Glide.with(binding.root.context).load(item.ImgUrl).into(binding.ivImg)
         }
-    }
-}
-
-private class NewsDiffCallback : DiffUtil.ItemCallback<SimpleNews>() {
-    override fun areItemsTheSame(oldItem: SimpleNews, newItem: SimpleNews): Boolean {
-        return oldItem.Id == newItem.Id
-    }
-
-    override fun areContentsTheSame(oldItem: SimpleNews, newItem: SimpleNews): Boolean {
-        return oldItem == newItem
     }
 }
 

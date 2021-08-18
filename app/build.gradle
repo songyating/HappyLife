@@ -59,7 +59,7 @@ dependencies {
     def retrofit_version = '2.9.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-    def  okhttp_version = '4.9.0'
+    def okhttp_version = '4.9.0'
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
@@ -73,8 +73,14 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
 
     // 添加依赖
-    def paging_version = '3.0.0-alpha02'
+    def paging_version = '3.0.0-alpha07'
     implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "mobile.xinhuamm:carousel:1.1.4"
+
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
 
 
 

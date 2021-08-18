@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.xinhuamm.carousel.CarouselView
+        android:id="@+id/carousel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:mj_carousel_infinite="false"
+        app:mj_carousel_orientation="horizontal"
+        app:mj_indicator_divider_space="4dp"
+        app:mj_indicator_gravity="bottom|center"
+        app:mj_carousel_scale="1.0"
+        app:mj_play_auto="false"/>
+</FrameLayout>
